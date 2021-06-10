@@ -1,9 +1,9 @@
-import { Layout, Menu, Steps } from "antd";
-import {
-	UploadOutlined,
-	UserOutlined,
-	VideoCameraOutlined,
-} from "@ant-design/icons";
+import { Layout, Menu, Steps, Typography } from "antd";
+// import {
+// 	UploadOutlined,
+// 	UserOutlined,
+// 	VideoCameraOutlined,
+// } from "@ant-design/icons";
 
 import styles from "../styles/Questionnaire.module.css";
 import Question from "../components/Question";
@@ -41,6 +41,15 @@ const questionnaire = () => {
 					</div>
 				</Sider>
 				<Layout>
+					{/* <Header> </Header> */}
+					<div className={styles.titlebar}>
+						<Typography.Paragraph className={styles.title}>
+							PETg
+						</Typography.Paragraph>
+						{/* <Typography.Paragraph className={styles.subtitle}>
+							Privacy-enhancing Technology guideline
+						</Typography.Paragraph> */}
+					</div>
 					<Content className={styles.content}>
 						<Question />
 					</Content>

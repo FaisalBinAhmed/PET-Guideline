@@ -13,4 +13,14 @@
 	flex-direction: column;
 	justify-content: center;
 	margin: 0 auto;
+	margin-top: -300px;
+}
+.titlebar {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.title {
+	font-size: 80px;
+	margin-right: 20px;
 }
