@@ -3,5 +3,14 @@
 	flex-direction: column;
 	justify-content: center;
 	height: 100vh;
-	margin-left: 120px;
+
+	margin: 0 auto;
+	width: 200px;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
 }

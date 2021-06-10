@@ -6,6 +6,7 @@ import {
 } from "@ant-design/icons";
 
 import styles from "../styles/Questionnaire.module.css";
+import Question from "../components/Question";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { Step } = Steps;
@@ -27,19 +28,21 @@ const questionnaire = () => {
 					}}>
 					<div className={styles.steps}>
 						<Steps direction="vertical" size="small" current={1}>
-							<Step title="Finished" description="This is a description." />
-							<Step title="In Progress" description="This is a description." />
-							<Step title="Waiting" description="This is a description." />
+							<Step
+								title="Computing Cost"
+								description="This is a description."
+							/>
+							<Step title="Publishing" description="This is a description." />
+							<Step
+								title="Stastical Disclosure"
+								description="This is a description."
+							/>
 						</Steps>
 					</div>
 				</Sider>
 				<Layout>
-					<Content style={{ margin: "24px 16px 0" }}>
-						<div
-							className="site-layout-background"
-							style={{ padding: 24, minHeight: 360 }}>
-							content
-						</div>
+					<Content className={styles.content}>
+						<Question />
 					</Content>
 				</Layout>
 			</Layout>
