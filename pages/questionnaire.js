@@ -25,7 +25,7 @@ const calculateBest = (pooldata) => {
 
 	const sortedArr = Object.entries(counterObj).sort((a, b) => b[1] - a[1]);
 
-	// console.log(sortedArr);
+	console.log("sorted", sortedArr);
 
 	//best two
 
@@ -45,7 +45,7 @@ const calculateBest = (pooldata) => {
 		}
 	});
 
-	//geet second best score
+	//get second best score
 
 	sortedArr.forEach((item) => {
 		for (let i = highestPoint - 1; i >= 0; i--) {
@@ -57,7 +57,7 @@ const calculateBest = (pooldata) => {
 		}
 	});
 
-	//get secondn best ones
+	//get second best ones
 
 	sortedArr.forEach((item) => {
 		if (item[1] == secondHighestPoint) {
@@ -80,14 +80,16 @@ const calculateMissedCriteria = (pet, ansArr) => {
 	const missedCriteria = []; //id for the criteria
 
 	petArr.forEach((item, index) => {
-		if (item != ansArr[index]) {
-			if (item != 2 && item != 3) {
+		if (item !== ansArr[index]) {
+			if (item !== 2 && item !== 3) {
+				//ignoring irrelevant and unknown data for now
 				missedCriteria.push(questionData[index].id);
 			}
 		}
 	});
 
 	console.log(pet, petArr, missedCriteria);
+	return missedCriteria;
 };
 
 const questionnaire = () => {
@@ -95,7 +97,7 @@ const questionnaire = () => {
 	const [answers, setAnswers] = useState([]);
 
 	const [showResult, setShowResult] = useState(false);
-	const [pool, setPool] = useState([]);
+	// const [pool, setPool] = useState([]);
 
 	const primary = useRef("");
 	const secondary = useRef("");
@@ -103,7 +105,7 @@ const questionnaire = () => {
 	const handleAnswer = (ans) => {
 		setquestionIndex(questionIndex + 1);
 		const newAnswers = [...answers, ans];
-		console.log(newAnswers);
+		// console.log(newAnswers);
 		setAnswers(newAnswers);
 	};
 
@@ -116,7 +118,7 @@ const questionnaire = () => {
 		let newPool = [];
 		answers.map((ans, i) => {
 			pets.map((pet, j) => {
-				if (pet.arr[i] == ans) {
+				if (pet.arr[i] === ans) {
 					newPool.push(pet.id);
 				}
 			});
@@ -124,15 +126,45 @@ const questionnaire = () => {
 		// console.log(newPool);
 		const result = calculateBest(newPool);
 
+		// console.log(result);
+
 		const primaryPET = [];
 		const secondaryPET = [];
 
 		//for each pet find missed criteria
 
-		calculateMissedCriteria(result.bestPET[0], answers);
+		result.bestPET.forEach((item) => {
+			const missedCriteria = calculateMissedCriteria(item, answers);
 
-		primary.current = result.bestPET[0];
-		secondary.current = result.secondBest[0];
+			primaryPET.push({
+				name: item,
+				missed: missedCriteria,
+			});
+		});
+
+		result.secondBest.forEach((item) => {
+			const missedCriteria = calculateMissedCriteria(item, answers);
+
+			secondaryPET.push({
+				name: item,
+				missed: missedCriteria,
+			});
+		});
+
+		// console.log("second missed", secondaryPET);
+
+		//sorting by who missed the least
+		const sortedPrimary = primaryPET.sort((a, b) => {
+			return a.missed.length - b.missed.length;
+		});
+
+		const sortedSecondary = secondaryPET.sort((a, b) => {
+			return a.missed.length - b.missed.length;
+		});
+
+		// console.log("best missed", sortedPrimary);
+		primary.current = sortedPrimary;
+		secondary.current = sortedSecondary;
 	};
 
 	return (
