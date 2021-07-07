@@ -1,0 +1,25 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 20px;
+}
+.cards {
+	display: flex;
+	flex-direction: row;
+}
+.hero {
+	width: 100%;
+	/* height: 200px; */
+	font-size: 40px;
+	margin-bottom: 20px;
+	/* background-color: #ececec; */
+}
+.subtitle {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+.primary {
+	width: 100%;
+	background-color: #ececec;
+}
