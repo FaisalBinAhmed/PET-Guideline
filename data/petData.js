@@ -11,17 +11,17 @@ export const pets = [
 	},
 	{
 		id: "zkp",
-		name: "Zero Knowledge proof",
+		name: "Zero Knowledge Proof",
 		arr: [3, 1, 3, 3, 1, 0, 3, 1, 1, 1, 3, 2, 2],
 	},
 	{
 		id: "he",
-		name: "Homomorphic encryption",
+		name: "Homomorphic Encryption",
 		arr: [3, 2, 3, 1, 1, 3, 1, 3, 1, 1, 3, 2, 2],
 	},
 	{
 		id: "smc",
-		name: "Secure multiparty computation",
+		name: "Secure Multiparty Computation",
 		arr: [3, 3, 1, 2, 1, 3, 1, 1, 1, 1, 3, 2, 2],
 	},
 	{
@@ -47,12 +47,12 @@ export const pets = [
 	{
 		id: "ld",
 		name: "L-diversity",
-		arr: [1, 1, 3, 2, 2, 3, 2, 1, 1, 0, 1, 1, 1],
+		arr: [1, 1, 3, 2, 2, 3, 2, 1, 1, 0, 1, 1, 0],
 	},
 	{
 		id: "tc",
 		name: "T-closeness",
-		arr: [1, 1, 3, 2, 2, 3, 2, 1, 1, 0, 1, 1, 0],
+		arr: [1, 1, 3, 2, 2, 3, 2, 1, 1, 0, 0, 1, 0],
 	},
 	{
 		id: "psu",

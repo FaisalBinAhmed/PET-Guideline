@@ -40,11 +40,13 @@ const dummyData2 = [
 	},
 ];
 
-const Result = ({ primary, secondary }) => {
+const Result = ({ primary, secondary, hi, sec }) => {
 	// const [visible, setVisible] = useState(false);
 
 	const [best, setBest] = useState([]);
 	const [alt, setAlt] = useState([]);
+
+	const [secUsed, setSecUsed] = useState(false);
 
 	console.log(primary, secondary);
 
@@ -65,12 +67,10 @@ const Result = ({ primary, secondary }) => {
 			}
 		});
 
-		// if (primary.length < 3) {
-		// 	secondary.forEach((item) => {
-		// 		//get best ones
-		// 		secondBest.push(item);
-		// 	});
-		// }
+		if (primary.length == 1) {
+			setSecUsed(true);
+			secondBest.push(secondary[0]);
+		}
 
 		setBest(bestPET);
 		setAlt(secondBest);
@@ -80,20 +80,35 @@ const Result = ({ primary, secondary }) => {
 		<div className={styles.root}>
 			<div className={styles.primary}>
 				<div className={styles.container}>
-					<div style={{ fontSize: "20px" }}>Your Best PET:</div>
+					<div style={{ fontSize: "20px" }}>Your Best PET(s):</div>
+					<div style={{ fontSize: "17px", color: "green" }}>
+						Matches {hi} criteria
+					</div>
 					{best.map((item, index) => {
-						return <PET title={item.name} missed={item.missed} />;
+						return <PET key={index} title={item.name} missed={item.missed} />;
 					})}
 				</div>
 			</div>
-			<div className={styles.secondary}>
-				<div className={styles.container}>
-					<div style={{ fontSize: "20px" }}>Your Alternative PET:</div>
-					{alt.map((item, index) => {
-						return <PET title={item.name} missed={item.missed} alt={true} />;
-					})}
+			{alt.length && (
+				<div className={styles.secondary}>
+					<div className={styles.container}>
+						<div style={{ fontSize: "20px" }}>Your Alternative PET(s):</div>
+						<div style={{ fontSize: "17px", color: "green" }}>
+							Matches {secUsed ? sec : hi} criteria
+						</div>
+						{alt.map((item, index) => {
+							return (
+								<PET
+									key={index}
+									title={item.name}
+									missed={item.missed}
+									alt={true}
+								/>
+							);
+						})}
+					</div>
 				</div>
-			</div>
+			)}
 		</div>
 	);
 };
@@ -128,12 +143,12 @@ const PET = ({ title, missed, alt }) => {
 				</div>
 			)}
 			<div className={styles.cards}>
-				{missed.map((item, index) => {
+				{missed.map((item) => {
 					return (
 						<SmallCard
-							index={index}
-							missedCriteria={questionData[item].step}
-							description={questionData[item].importance}
+							key={item}
+							missedCriteria={questionData[item - 1]?.step}
+							description={questionData[item - 1]?.importance}
 						/>
 					);
 				})}

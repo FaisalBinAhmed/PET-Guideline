@@ -1,10 +1,5 @@
 import { useState, useRef } from "react";
 import { Layout, Menu, Steps, Typography, Button } from "antd";
-// import {
-// 	UploadOutlined,
-// 	UserOutlined,
-// 	VideoCameraOutlined,
-// } from "@ant-design/icons";
 
 import styles from "../styles/Questionnaire.module.css";
 import Question from "../components/Question";
@@ -68,7 +63,7 @@ const calculateBest = (pooldata) => {
 	// console.log(bestPET);
 	// console.log(secondBest);
 
-	return { bestPET, secondBest };
+	return { bestPET, secondBest, highestPoint, secondHighestPoint };
 };
 
 const calculateMissedCriteria = (pet, ansArr) => {
@@ -102,6 +97,9 @@ const questionnaire = () => {
 	const primary = useRef("");
 	const secondary = useRef("");
 
+	const hiscore = useRef();
+	const secondScore = useRef();
+
 	const handleAnswer = (ans) => {
 		setquestionIndex(questionIndex + 1);
 		const newAnswers = [...answers, ans];
@@ -126,7 +124,7 @@ const questionnaire = () => {
 		// console.log(newPool);
 		const result = calculateBest(newPool);
 
-		// console.log(result);
+		console.log(result);
 
 		const primaryPET = [];
 		const secondaryPET = [];
@@ -165,6 +163,9 @@ const questionnaire = () => {
 		// console.log("best missed", sortedPrimary);
 		primary.current = sortedPrimary;
 		secondary.current = sortedSecondary;
+
+		hiscore.current = result.highestPoint;
+		secondScore.current = result.secondHighestPoint;
 	};
 
 	return (
@@ -189,7 +190,7 @@ const questionnaire = () => {
 						</Steps>
 					</div>
 				</Sider>
-				<Layout>
+				<Layout style={{ maxWidth: "75vw" }}>
 					{/* <Header> </Header> */}
 					<div className={styles.titlebar}>
 						<Typography.Paragraph className={styles.title}>
@@ -201,7 +202,12 @@ const questionnaire = () => {
 					</div>
 					<Content className={styles.content}>
 						{showResult ? (
-							<Result primary={primary.current} secondary={secondary.current} />
+							<Result
+								primary={primary.current}
+								secondary={secondary.current}
+								hi={hiscore.current}
+								sec={secondScore.current}
+							/>
 						) : questionIndex < 13 ? (
 							<Question
 								question={questionData[questionIndex]?.name}
