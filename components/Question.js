@@ -41,7 +41,7 @@ const Question = ({ question, handleAnswer }) => {
 					/>
 				</div>
 				<div className={styles.skip}>
-					<Button type="link">Skip</Button>
+					<Button type="link">Not Applicable / Not Sure</Button>
 				</div>
 			</Card>
 			<LearnMore visible={visible} setVisible={setVisible} />

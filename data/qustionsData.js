@@ -5,6 +5,7 @@ export const questionData = [
 		importance: "Statistical Disclosure is used...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Statistical Disclosure",
 	},
 	{
 		id: 2,
@@ -12,6 +13,7 @@ export const questionData = [
 		importance: "Data Publication is used...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Data Publication",
 	},
 	{
 		id: 3,
@@ -19,6 +21,7 @@ export const questionData = [
 		importance: "Data distribution is used...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Distributed Data",
 	},
 	{
 		id: 4,
@@ -26,6 +29,7 @@ export const questionData = [
 		importance: "Data is used. stored centrally..",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Edge Devices",
 	},
 	{
 		id: 5,
@@ -33,6 +37,7 @@ export const questionData = [
 		importance: "Data in transit can get...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Data Transportation",
 	},
 	{
 		id: 6,
@@ -40,6 +45,7 @@ export const questionData = [
 		importance: "Creating synthetic data...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Need of Real Data",
 	},
 	{
 		id: 7,
@@ -47,6 +53,7 @@ export const questionData = [
 		importance: "Some PETs are compu...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Computational Cost",
 	},
 	{
 		id: 8,
@@ -54,6 +61,7 @@ export const questionData = [
 		importance: "Some PETs are compu...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Multiple StakeHolders",
 	},
 	{
 		id: 9,
@@ -61,6 +69,7 @@ export const questionData = [
 		importance: "Some PETs are compu...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Third Parties",
 	},
 	{
 		id: 10,
@@ -68,6 +77,7 @@ export const questionData = [
 		importance: "Some PETs are compu...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Lossless",
 	},
 	{
 		id: 11,
@@ -75,6 +85,7 @@ export const questionData = [
 		importance: "Some PETs are compu...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Accuracy",
 	},
 	{
 		id: 12,
@@ -82,6 +93,7 @@ export const questionData = [
 		importance: "Some PETs are compu...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Textual Data",
 	},
 	{
 		id: 13,
@@ -89,5 +101,6 @@ export const questionData = [
 		importance: "Some PETs are compu...",
 		yes: "You should choose yes if ...",
 		no: "you shoudn't select this if....",
+		step: "Data Dimension",
 	},
 ];

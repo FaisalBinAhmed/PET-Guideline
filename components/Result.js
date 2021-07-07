@@ -37,10 +37,11 @@ const dummyData2 = [
 	},
 ];
 
-const Result = ({ primary, secondary, tertiary }) => {
+const Result = ({ primary, secondary }) => {
 	// const [visible, setVisible] = useState(false);
+	console.log(primary, secondary);
 	return (
-		<>
+		<div className={styles.root}>
 			<div className={styles.primary}>
 				<div className={styles.container}>
 					<div style={{ fontSize: "20px" }}>Your Best PET:</div>
@@ -83,7 +84,7 @@ const Result = ({ primary, secondary, tertiary }) => {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 
