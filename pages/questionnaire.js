@@ -212,6 +212,7 @@ const questionnaire = () => {
 							<Question
 								question={questionData[questionIndex]?.name}
 								handleAnswer={handleAnswer}
+								description={questionData[questionIndex].importance}
 							/>
 						) : (
 							<Button type="primary" size="large" onClick={handleResults}>

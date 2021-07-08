@@ -3,6 +3,7 @@ export const pets = [
 		id: "dp",
 		name: "Differential Privacy",
 		arr: [1, 1, 1, 1, 2, 1, 0, 1, 1, 0, 1, 3, 2],
+		info: "Differential privacy is a technique of exposing some insights about a specific dataset without really exposing the real value of the dataset. This in turn protects the privacy of thee data subjects, and it becomes mathematically infeasible to determine any insights about the original data subjects from the published data.",
 	},
 	{
 		id: "fl",
