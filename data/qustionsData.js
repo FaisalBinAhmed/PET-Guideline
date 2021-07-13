@@ -4,8 +4,8 @@ export const questionData = [
 		name: "Is statistical disclosure control important to you?",
 		importance:
 			"Statistical disclosure control is useful when you want to control the statistical confidentiality of data. These are a set of measures to reduce or eliminate the risk of data being used to link back to the original subject or to expose any sensitive or personal information.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "If you want to control statistical disclosure of your data",
+		no: "If you do not care about statistical disclosure",
 		step: "Statistical Disclosure",
 	},
 	{
