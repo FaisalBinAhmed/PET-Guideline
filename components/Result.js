@@ -1,4 +1,4 @@
-import { Card, Avatar, Button, Divider, Space } from "antd";
+import { Card, Tag } from "antd";
 import { QuestionOutlined } from "@ant-design/icons";
 import styles from "../styles/Result.module.css";
 import AnswerButton from "./AnswerButton";
@@ -85,7 +85,14 @@ const Result = ({ primary, secondary, hi, sec }) => {
 						Matches {hi} criteria
 					</div>
 					{best.map((item, index) => {
-						return <PET key={index} title={item.name} missed={item.missed} />;
+						return (
+							<PET
+								key={index}
+								title={item.name}
+								missed={item.missed}
+								matched={item.matched}
+							/>
+						);
 					})}
 				</div>
 			</div>
@@ -102,6 +109,7 @@ const Result = ({ primary, secondary, hi, sec }) => {
 									key={index}
 									title={item.name}
 									missed={item.missed}
+									matched={item.matched}
 									alt={true}
 								/>
 							);
@@ -125,21 +133,28 @@ const SmallCard = ({ index, missedCriteria, description }) => {
 	);
 };
 
-const PET = ({ title, missed, alt }) => {
+const PET = ({ title, missed, matched, alt }) => {
 	return (
 		<>
 			<div className={styles.hero}>{pets.find((i) => i.id == title).name}</div>
+			<div className={styles.tagContainer}>
+				{matched.map((item) => (
+					<Tag style={{ fontSize: "20px", padding: "10px" }} color="green">
+						{questionData[item - 1].step}
+					</Tag>
+				))}
+			</div>
 			{!alt && !!missed.length && (
 				<div className={styles.subtitle}>
-					While this is the best technolgy for you, it doesn't fulfill all of
-					your chosen criteria. Here are the criteria it doesn't fulfill:
+					While this is the best technolgy for you, it doesn't match all of your
+					chosen criteria. Here are the choices it doesn't match:
 				</div>
 			)}
 			{alt && (
 				<div className={styles.subtitle}>
 					While the above PET is another alternative technolgy for you, it
-					doesn't fulfill all of your chosen criteria. Here are the criteria it
-					doesn't fulfill:
+					doesn't match all of your chosen criteria. Here are the choices it
+					doesn't match:
 				</div>
 			)}
 			<div className={styles.cards}>

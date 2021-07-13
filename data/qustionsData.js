@@ -55,7 +55,7 @@ export const questionData = [
 	},
 	{
 		id: 7,
-		name: "Is low computational cost impotant to you?",
+		name: "Can you afford high computational cost?",
 		importance:
 			"The amount of processing power, and memory taken to implement a specific technology can be a limiting factor in many scenarios. If the data is being processed in an IoT device or devices with limited computational power, certain technologies may not be eligible to be used.",
 		yes: "You should choose yes if ...",

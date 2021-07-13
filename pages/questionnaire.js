@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
-import { Layout, Menu, Steps, Typography, Button } from "antd";
+import { Layout, Badge, Steps, Typography, Button } from "antd";
+import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { useRouter } from "next/router";
 
 import styles from "../styles/Questionnaire.module.css";
 import Question from "../components/Question";
@@ -73,6 +75,7 @@ const calculateMissedCriteria = (pet, ansArr) => {
 	//comparing both arrays for mismatch
 
 	const missedCriteria = []; //id for the criteria
+	const matchedCriteria = [];
 
 	petArr.forEach((item, index) => {
 		if (item !== ansArr[index]) {
@@ -80,19 +83,30 @@ const calculateMissedCriteria = (pet, ansArr) => {
 				//ignoring irrelevant and unknown data for now
 				missedCriteria.push(questionData[index].id);
 			}
+		} else if (item !== 2 && item !== 3) {
+			matchedCriteria.push(questionData[index].id);
 		}
 	});
 
-	console.log(pet, petArr, missedCriteria);
-	return missedCriteria;
+	console.log(
+		"criteria mismatch",
+		pet,
+		petArr,
+		missedCriteria,
+		matchedCriteria
+	);
+	return { missedCriteria, matchedCriteria };
 };
 
 const questionnaire = () => {
 	const [questionIndex, setquestionIndex] = useState(0);
 	const [answers, setAnswers] = useState([]);
+	const [description, setDescription] = useState([]);
 
 	const [showResult, setShowResult] = useState(false);
 	// const [pool, setPool] = useState([]);
+
+	const router = useRouter();
 
 	const primary = useRef("");
 	const secondary = useRef("");
@@ -103,7 +117,17 @@ const questionnaire = () => {
 	const handleAnswer = (ans) => {
 		setquestionIndex(questionIndex + 1);
 		const newAnswers = [...answers, ans];
-		// console.log(newAnswers);
+		console.log(newAnswers);
+
+		const newDesc = [...description];
+
+		if (ans === 1) {
+			newDesc.push("YES");
+		}
+		if (ans === 0) {
+			newDesc.push("NO");
+		}
+		setDescription(newDesc);
 		setAnswers(newAnswers);
 	};
 
@@ -132,20 +156,28 @@ const questionnaire = () => {
 		//for each pet find missed criteria
 
 		result.bestPET.forEach((item) => {
-			const missedCriteria = calculateMissedCriteria(item, answers);
+			const { missedCriteria, matchedCriteria } = calculateMissedCriteria(
+				item,
+				answers
+			);
 
 			primaryPET.push({
 				name: item,
 				missed: missedCriteria,
+				matched: matchedCriteria,
 			});
 		});
 
 		result.secondBest.forEach((item) => {
-			const missedCriteria = calculateMissedCriteria(item, answers);
+			const { missedCriteria, matchedCriteria } = calculateMissedCriteria(
+				item,
+				answers
+			);
 
 			secondaryPET.push({
 				name: item,
 				missed: missedCriteria,
+				matched: matchedCriteria,
 			});
 		});
 
@@ -184,8 +216,11 @@ const questionnaire = () => {
 					}}>
 					<div className={styles.steps}>
 						<Steps direction="vertical" size="small" current={questionIndex}>
-							{questionData.map((item) => (
-								<Step title={item.step} key={item.id} />
+							{questionData.map((item, index) => (
+								<Step
+									title={item.step}
+									key={item.id}
+									description={description[index]}></Step>
 							))}
 						</Steps>
 					</div>
@@ -193,7 +228,9 @@ const questionnaire = () => {
 				<Layout style={{ maxWidth: "75vw" }}>
 					{/* <Header> </Header> */}
 					<div className={styles.titlebar}>
-						<Typography.Paragraph className={styles.title}>
+						<Typography.Paragraph
+							className={styles.title}
+							onClick={() => router.reload("/questionnaire")}>
 							PETg
 						</Typography.Paragraph>
 						{/* <Typography.Paragraph className={styles.subtitle}>
