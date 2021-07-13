@@ -223,6 +223,19 @@ const questionnaire = () => {
 									description={description[index]}></Step>
 							))}
 						</Steps>
+						{showResult && (
+							<Button
+								type="dashed"
+								block
+								style={{
+									height: "120px",
+									maxWidth: "220px",
+									marginTop: "20px",
+								}}>
+								<Typography.Title level={4}>Strict Mode!</Typography.Title>
+								<Typography.Text>For a more specific answer</Typography.Text>
+							</Button>
+						)}
 					</div>
 				</Sider>
 				<Layout style={{ maxWidth: "75vw" }}>

@@ -1,4 +1,4 @@
-import { Card, Popover, Tag } from "antd";
+import { Card, Popover, Tag, Collapse } from "antd";
 import { QuestionOutlined } from "@ant-design/icons";
 import styles from "../styles/Result.module.css";
 import AnswerButton from "./AnswerButton";
@@ -119,7 +119,7 @@ const PET = ({ title, missed, matched, alt }) => {
 					</Popover>
 				))}
 			</div>
-			{missed.length && (
+			{!!missed.length && (
 				<>
 					{!alt && !!missed.length && (
 						<div className={styles.subtitle}>
@@ -155,6 +155,34 @@ const PET = ({ title, missed, matched, alt }) => {
 				})}
 			</div>
 			<div className={styles.info}>{pets.find((i) => i.id == title).info}</div>
+			<Collapse ghost>
+				<Collapse.Panel
+					style={{
+						fontSize: "20px",
+						width: "90%",
+					}}
+					header="More Info"
+					key="1">
+					<p>{pets.find((i) => i.id == title).how}</p>
+				</Collapse.Panel>
+				<Collapse.Panel
+					style={{
+						fontSize: "20px",
+						width: "90%",
+					}}
+					header="Useful links"
+					key="2">
+					<p style={{ display: "inline" }}>1. </p>
+					<a style={{ display: "inline" }}>
+						https://towardsdatascience.com/synthetic-data-generation-a-must-have-skill-for-new-data-scientists-915896c0c1ae
+					</a>
+					<br />
+					<p style={{ display: "inline" }}>2. </p>
+					<a style={{ display: "inline" }}>
+						https://research.aimultiple.com/synthetic-data-generation/
+					</a>
+				</Collapse.Panel>
+			</Collapse>
 		</>
 	);
 };
