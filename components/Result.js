@@ -1,4 +1,4 @@
-import { Card, Tag } from "antd";
+import { Card, Popover, Tag } from "antd";
 import { QuestionOutlined } from "@ant-design/icons";
 import styles from "../styles/Result.module.css";
 import AnswerButton from "./AnswerButton";
@@ -7,38 +7,6 @@ import { useState, useEffect } from "react";
 
 import { questionData } from "../data/qustionsData";
 import { pets } from "../data/petData";
-
-const { Meta } = Card;
-
-const dummyData = [
-	{
-		criteria: "Computational cost",
-		importance:
-			"Computational cost is important when you don't want to spend a lot of computational resource, where the resource can be limited...",
-	},
-	{
-		criteria: "Multiple Stakeholders",
-		importance:
-			"Computational power is important when you don't want to spend a lot of computational resource, where the resource can be limited...",
-	},
-];
-const dummyData2 = [
-	{
-		criteria: "Computational cost",
-		importance:
-			"Computational cost is important when you don't want to spend a lot of computational resource, where the resource can be limited...",
-	},
-	{
-		criteria: "Multiple Stakeholders",
-		importance:
-			"Computational power is important when you don't want to spend a lot of computational resource, where the resource can be limited...",
-	},
-	{
-		criteria: "Textual data",
-		importance:
-			"Computational power is important when you don't want to spend a lot of computational resource, where the resource can be limited...",
-	},
-];
 
 const Result = ({ primary, secondary, hi, sec }) => {
 	// const [visible, setVisible] = useState(false);
@@ -121,17 +89,17 @@ const Result = ({ primary, secondary, hi, sec }) => {
 	);
 };
 
-const SmallCard = ({ index, missedCriteria, description }) => {
-	return (
-		<Card
-			title={missedCriteria}
-			extra={<a href="#">More Info</a>}
-			bordered={false}
-			style={{ width: 300, marginRight: "10px" }}>
-			<p>{description}</p>
-		</Card>
-	);
-};
+// const SmallCard = ({ index, missedCriteria, description }) => {
+// 	return (
+// 		<Card
+// 			title={missedCriteria}
+// 			extra={<a href="#">More Info</a>}
+// 			bordered={false}
+// 			style={{ width: 300, marginRight: "10px" }}>
+// 			<p>{description}</p>
+// 		</Card>
+// 	);
+// };
 
 const PET = ({ title, missed, matched, alt }) => {
 	return (
@@ -139,35 +107,54 @@ const PET = ({ title, missed, matched, alt }) => {
 			<div className={styles.hero}>{pets.find((i) => i.id == title).name}</div>
 			<div className={styles.tagContainer}>
 				{matched.map((item) => (
-					<Tag style={{ fontSize: "20px", padding: "10px" }} color="green">
-						{questionData[item - 1].step}
-					</Tag>
+					<Popover
+						content={
+							<div className={styles.tooltip}>
+								{questionData[item - 1].importance}
+							</div>
+						}>
+						<Tag style={{ fontSize: "20px", padding: "10px" }} color="green">
+							{questionData[item - 1].step}
+						</Tag>
+					</Popover>
 				))}
 			</div>
-			{!alt && !!missed.length && (
-				<div className={styles.subtitle}>
-					While this is the best technolgy for you, it doesn't match all of your
-					chosen criteria. Here are the choices it doesn't match:
-				</div>
-			)}
-			{alt && (
-				<div className={styles.subtitle}>
-					While the above PET is another alternative technolgy for you, it
-					doesn't match all of your chosen criteria. Here are the choices it
-					doesn't match:
-				</div>
+			{missed.length && (
+				<>
+					{!alt && !!missed.length && (
+						<div className={styles.subtitle}>
+							While this is the best technolgy for you, it doesn't match all of
+							your chosen criteria. Here are the choices it doesn't match:
+						</div>
+					)}
+					{alt && (
+						<div className={styles.subtitle}>
+							While the above PET is another alternative technolgy for you, it
+							doesn't match all of your chosen criteria. Here are the choices it
+							doesn't match:
+						</div>
+					)}
+
+					<div className={styles.mismatch}>Misses {missed.length} criteria</div>
+				</>
 			)}
 			<div className={styles.cards}>
 				{missed.map((item) => {
 					return (
-						<SmallCard
-							key={item}
-							missedCriteria={questionData[item - 1]?.step}
-							description={questionData[item - 1]?.importance}
-						/>
+						<Popover
+							content={
+								<div className={styles.tooltip}>
+									{questionData[item - 1].importance}
+								</div>
+							}>
+							<Tag style={{ fontSize: "20px", padding: "10px" }} color="red">
+								{questionData[item - 1].step}
+							</Tag>
+						</Popover>
 					);
 				})}
 			</div>
+			<div className={styles.info}>{pets.find((i) => i.id == title).info}</div>
 		</>
 	);
 };

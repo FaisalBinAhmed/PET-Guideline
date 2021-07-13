@@ -20,6 +20,7 @@
 .titlebar {
 	display: flex;
 	flex-direction: row-reverse;
+	margin-bottom: 20px;
 }
 
 .title {

@@ -231,7 +231,7 @@ const questionnaire = () => {
 						<Typography.Paragraph
 							className={styles.title}
 							onClick={() => router.reload("/questionnaire")}>
-							PETg
+							PET guideline
 						</Typography.Paragraph>
 						{/* <Typography.Paragraph className={styles.subtitle}>
 							Privacy-enhancing Technology guideline
