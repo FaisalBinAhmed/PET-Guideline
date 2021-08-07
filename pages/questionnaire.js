@@ -8,6 +8,7 @@ import Question from "../components/Question";
 import { questionData } from "../data/qustionsData";
 import { pets } from "../data/petData";
 import Result from "../components/Result";
+import Link from "next/link";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { Step } = Steps;
@@ -224,17 +225,19 @@ const questionnaire = () => {
 							))}
 						</Steps>
 						{showResult && (
-							<Button
-								type="dashed"
-								block
-								style={{
-									height: "120px",
-									maxWidth: "220px",
-									marginTop: "20px",
-								}}>
-								<Typography.Title level={4}>Strict Mode!</Typography.Title>
-								<Typography.Text>For a more specific answer</Typography.Text>
-							</Button>
+							<Link href="/strict">
+								<Button
+									type="dashed"
+									block
+									style={{
+										height: "120px",
+										maxWidth: "220px",
+										marginTop: "20px",
+									}}>
+									<Typography.Title level={4}>Strict Mode!</Typography.Title>
+									<Typography.Text>For a more specific answer</Typography.Text>
+								</Button>
+							</Link>
 						)}
 					</div>
 				</Sider>

@@ -1,4 +1,5 @@
-export const pets = [
+const readline = require("readline");
+const pets = [
 	{
 		id: "dp",
 		name: "Differential Privacy",
@@ -183,3 +184,407 @@ For example you want to train your fancy new artificially intelligent video filt
 To start with you’d need some actual video footage of people waving hands and some images of artificially generated people. Then Deepfake will use these two data to create a doctored version of videos where those persons in the artificially created images will be seen waving their hand. Deepfake will make sure their bodily features are reflected in the new video. Now can use these synthetic videos to train your application; without sacrificing anyone’s privacy.`,
 	},
 ];
+
+const questionData = [
+	{
+		id: 1,
+		name: "Is statistical disclosure control important to you?",
+		importance:
+			"Statistical disclosure control is useful when you want to control the statistical confidentiality of data. These are a set of measures to reduce or eliminate the risk of data being used to link back to the original subject or to expose any sensitive or personal information.",
+		yes: "If you want to control statistical disclosure of your data",
+		no: "If you do not care about statistical disclosure",
+		step: "Statistical Disclosure",
+		acceptedTech: {
+			dp: 1,
+			fl: 3,
+			zkp: 3,
+			he: 3,
+			smc: 3,
+			ob: 3,
+			dape: 1,
+			anon: 1,
+			kan: 1,
+			ld: 1,
+			tc: 1,
+			psu: 0,
+			ran: 1,
+			syn: 1,
+		},
+	},
+	{
+		id: 2,
+		name: "Do you plan to publish the data?",
+		importance:
+			"If you want to publish the data you’re currently dealing with, you have to take additional measures before you publish the data. The data need to be processed, checked against private info and local law before it can be published. The purpose of publication should also need to be taken into account.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Data Publication",
+		acceptedTech: {
+			dp: 1,
+			fl: 3,
+			zkp: 1,
+			he: 2,
+			smc: 3,
+			ob: 1,
+			dape: 1,
+			anon: 1,
+			kan: 1,
+			ld: 1,
+			tc: 1,
+			psu: 1,
+			ran: 1,
+			syn: 3,
+		},
+	},
+	{
+		id: 3,
+		name: "Is the data distributed or stored in a central location?",
+		importance:
+			"If the data is stored in multiple locations then managing the date in all of those locations is deemed necessary. Since the data will be transported, synced and stored, it should also be made sure the data and privacy are protected at those stages.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Distributed Data",
+		acceptedTech: {
+			dp: 1,
+			fl: 1,
+			zkp: 3,
+			he: 3,
+			smc: 1,
+			ob: 2,
+			dape: 2,
+			anon: 3,
+			kan: 3,
+			ld: 3,
+			tc: 3,
+			psu: 3,
+			ran: 3,
+			syn: 3,
+		},
+	},
+	{
+		id: 4,
+		name: "Do you collect data from edge devices?",
+		importance:
+			"The data stored in edge devices can be handled in two ways. In one way, the raw private data does not need to leave user devices for processing, the other relies on direct transfer of data between the client and a server. The tradeoff here is the accuracy of the insights and telemetry received from the end users.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Edge Devices",
+		acceptedTech: {
+			dp: 1,
+			fl: 1,
+			zkp: 3,
+			he: 1,
+			smc: 2,
+			ob: 2,
+			dape: 2,
+			anon: 2,
+			kan: 2,
+			ld: 2,
+			tc: 2,
+			psu: 2,
+			ran: 2,
+			syn: 2,
+		},
+	},
+	{
+		id: 5,
+		name: "Will the data be transported",
+		importance:
+			"The data that will be transferred has to be protected against certain threats, mainly the data in rest and transit are vulnerable to many attacks. Also if the data crossed International boundaries, the local legislations and regulations take precedence. For many reasons the data can not be transferred to another country or region.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Data Transportation",
+		acceptedTech: {
+			dp: 2,
+			fl: 1,
+			zkp: 1,
+			he: 1,
+			smc: 1,
+			ob: 3,
+			dape: 3,
+			anon: 3,
+			kan: 3,
+			ld: 3,
+			tc: 3,
+			psu: 3,
+			ran: 3,
+			syn: 3,
+		},
+	},
+	{
+		id: 6,
+		name: "Do you need real data?",
+		importance:
+			"In some cases, the desired goal can be achieved without using real data at all. For example if you want to generate a fake dataset, or train your ML model with similar data for purposes like image recognition, deep fake creation, and populating websites with dummy data. In these cases, the real data has no benefits over synthetically generated data, especially as the purpose is to learn the type of data, not the data itself.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Need of Real Data",
+		acceptedTech: {
+			dp: 1,
+			fl: 3,
+			zkp: 0,
+			he: 3,
+			smc: 3,
+			ob: 3,
+			dape: 3,
+			anon: 3,
+			kan: 3,
+			ld: 3,
+			tc: 3,
+			psu: 3,
+			ran: 2,
+			syn: 1,
+		},
+	},
+	{
+		id: 7,
+		name: "Can you afford high computational cost?",
+		importance:
+			"The amount of processing power, and memory taken to implement a specific technology can be a limiting factor in many scenarios. If the data is being processed in an IoT device or devices with limited computational power, certain technologies may not be eligible to be used.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Computational Cost",
+		acceptedTech: {
+			dp: 0,
+			fl: 1,
+			zkp: 3,
+			he: 1,
+			smc: 1,
+			ob: 1,
+			dape: 0,
+			anon: 2,
+			kan: 0,
+			ld: 1,
+			tc: 3,
+			psu: 0,
+			ran: 3,
+			syn: 1,
+		},
+	},
+	{
+		id: 8,
+		name: "Are there multiple stakeholders?",
+		importance:
+			"If there are more than one stakeholder involved it can raise multiple concerns. The stakeholders may not agree on sharing their data between them. It’s also possible the stakeholders do not have the same rights to the data.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Multiple StakeHolders",
+		acceptedTech: {
+			dp: 1,
+			fl: 1,
+			zkp: 1,
+			he: 3,
+			smc: 1,
+			ob: 3,
+			dape: 3,
+			anon: 1,
+			kan: 1,
+			ld: 1,
+			tc: 1,
+			psu: 1,
+			ran: 2,
+			syn: 2,
+		},
+	},
+	{
+		id: 9,
+		name: "Are third party stakeholders involved?",
+		importance:
+			"If a third party is involved during any phase of the data life cycle, certain policy can restrict sharing of data with that party. If you need to share the data with a third party, certain technologies can help alleviate this issue while providing minimal loss had it been shared without such restrictions",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Third Parties",
+		acceptedTech: {
+			dp: 1,
+			fl: 1,
+			zkp: 1,
+			he: 1,
+			smc: 1,
+			ob: 2,
+			dape: 2,
+			anon: 1,
+			kan: 1,
+			ld: 1,
+			tc: 1,
+			psu: 1,
+			ran: 2,
+			syn: 2,
+		},
+	},
+	{
+		id: 10,
+		name: "Do you need lossless technology?",
+		importance:
+			"The losslessness of a privacy enhancing technology is important when you’re dealing with mission critical data and the insights derived from the data should reproduce the same output for the same input. In other words the process of applying any privacy enhancing technology shouldn’t change the data in a way that it can affect the performance of the useful metrics.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Lossless",
+		acceptedTech: {
+			dp: 0,
+			fl: 3,
+			zkp: 1,
+			he: 1,
+			smc: 1,
+			ob: 1,
+			dape: 0,
+			anon: 0,
+			kan: 0,
+			ld: 0,
+			tc: 0,
+			psu: 0,
+			ran: 0,
+			syn: 0,
+		},
+	},
+	{
+		id: 11,
+		name: "Is accuracy important to you?",
+		importance:
+			"Certain privacy enhancing technology provides better accuracy than others. In other words, for the same data, certain technologies will produce consistent results. Accuracy is important when you have huge amount of data and little discrepancy in accuracy can lead to huge change in the final output.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Accuracy",
+		acceptedTech: {
+			dp: 1,
+			fl: 1,
+			zkp: 3,
+			he: 3,
+			smc: 3,
+			ob: 1,
+			dape: 1,
+			anon: 1,
+			kan: 1,
+			ld: 1,
+			tc: 1,
+			psu: 1,
+			ran: 1,
+			syn: 1,
+		},
+	},
+	{
+		id: 12,
+		name: "Is the data textual?",
+		importance:
+			"Text based data needs different processing than non-textual media based data. Some technologies work better with text based data. Since non textual data are stored and formatted in specific way, even storing the same data by different formats can lead to varying privacy enhancements by the same technologies.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Textual Data",
+		acceptedTech: {
+			dp: 3,
+			fl: 3,
+			zkp: 2,
+			he: 2,
+			smc: 2,
+			ob: 3,
+			dape: 3,
+			anon: 1,
+			kan: 1,
+			ld: 1,
+			tc: 1,
+			psu: 1,
+			ran: 3,
+			syn: 1,
+		},
+	},
+	{
+		id: 13,
+		name: "Dimension of the data?",
+		importance:
+			"This is an important metric when comparing different anonymization techniques like k-anonymity, l-diversity and t-closeness. Although, there is an improvement over the former, the higher dimension a dataset is, the former tends to provide better anonymity.",
+		yes: "You should choose yes if ...",
+		no: "you shoudn't select this if....",
+		step: "Data Dimension",
+		acceptedTech: {
+			dp: 2,
+			fl: 2,
+			zkp: 2,
+			he: 2,
+			smc: 2,
+			ob: 2,
+			dape: 2,
+			anon: 2,
+			kan: 0,
+			ld: 0,
+			tc: 1,
+			psu: 2,
+			ran: 2,
+			syn: 2,
+		},
+	},
+];
+
+let askableQuestion = JSON.parse(JSON.stringify(questionData));
+let alreadyAsked = []; // {id:n, answer: 1/0/2/3}
+let currentQuestion = askableQuestion[0];
+let techSets = JSON.parse(JSON.stringify(pets));
+
+function ask(question) {
+	const rl = readline.createInterface({
+		input: process.stdin,
+		output: process.stdout,
+	});
+
+	rl.question("Q:" + question.name, (answer) => {
+		console.log("ANSWER:", answer);
+
+		askableQuestion = askableQuestion.filter(
+			(question) => question.id != currentQuestion.id
+		);
+		rl.close();
+		processQuestionSet(answer);
+	});
+}
+
+const processQuestionSet = (answer) => {
+	console.log("Your anwser:", answer, currentQuestion);
+	// 1
+	// look for question where
+	techSets = techSets.filter((item) => {
+		console.log(
+			item.arr[currentQuestion.id - 1],
+			answer,
+			item.arr[currentQuestion.id - 1] == answer
+		);
+		return item.arr[currentQuestion.id - 1] == answer;
+	});
+	/*console.log(
+		"techSets",
+		techSets.map((tech) => tech.name)
+	);*/
+
+	console.log(askableQuestion.map((q) => q.name));
+
+	askableQuestion = askableQuestion.filter((question) => {
+		const shouldInclude = techSets.every((tech) => {
+			console.log(
+				question.name,
+				tech.id,
+				question.acceptedTech[tech.id],
+				question.acceptedTech[tech.id] == 1
+			);
+			return question.acceptedTech[tech.id] <= 3; // ?? prev 1
+		});
+		/*console.log(
+			question.name,
+			"shouldINclude:",
+			shouldInclude,
+			question.acceptedTech
+		);
+		console.log("\n-=====\n");*/
+		return shouldInclude;
+	});
+	console.log("askableQuestion", askableQuestion);
+	if (askableQuestion.length && techSets.length > 1) {
+		currentQuestion = askableQuestion[0];
+		ask(currentQuestion);
+	} else {
+		console.log(
+			"Suggested technologies:",
+			techSets.map((tech) => tech.name)
+		);
+	}
+};
+
+(function main() {
+	ask(currentQuestion);
+})();
