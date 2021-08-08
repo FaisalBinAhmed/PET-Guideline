@@ -128,6 +128,9 @@ const questionnaire = () => {
 		if (ans === 0) {
 			newDesc.push("NO");
 		}
+		if (ans === 4) {
+			newDesc.push("SKIPPED");
+		}
 		setDescription(newDesc);
 		setAnswers(newAnswers);
 	};

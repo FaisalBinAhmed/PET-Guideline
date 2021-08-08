@@ -42,7 +42,9 @@ const Question = ({ question, description = "", handleAnswer, yes, no }) => {
 					/>
 				</div>
 				<div className={styles.skip}>
-					<Button type="link">Not Sure / Skip</Button>
+					{/* <Button onClick={() => handleAnswer(4)} type="link">
+						Not Sure / Skip
+					</Button> */}
 				</div>
 			</Card>
 			<LearnMore visible={visible} setVisible={setVisible} />
