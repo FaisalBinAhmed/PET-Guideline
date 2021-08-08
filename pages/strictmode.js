@@ -37,7 +37,6 @@ const strictmode = () => {
 
 	const handleAnswer = (ans) => {
 		// setquestionIndex(questionIndex + 1);
-		processQuestionSet(ans);
 
 		const newAnswers = [...answers, ans];
 		console.log(newAnswers);
@@ -53,22 +52,30 @@ const strictmode = () => {
 		setDescription(newDesc);
 		setAnswers(newAnswers);
 
-		const newAskableQuestion = askableQuestions.filter(
+		const newAskableQuestions = askableQuestions.filter(
 			(question) => question.id != currentQuestion.id
 		);
-		setAskableQuestions(newAskableQuestion);
+		setAskableQuestions(newAskableQuestions);
+		processQuestionSet(ans, newAskableQuestions);
 	};
 
-	const processQuestionSet = (answer) => {
+	const processQuestionSet = (answer, newQuestions) => {
 		const newTechSets = techSets.filter((item) => {
 			return item.arr[currentQuestion.id - 1] == answer;
 		});
 		console.log("techset", newTechSets);
 		setTechSets(newTechSets);
 
-		const newAskableQuestions = askableQuestions.filter((question) => {
-			const shouldInclude = techSets.every((tech) => {
-				return question.acceptedTech[tech.id] <= 3; // ?? prev 1
+		const newAskableQuestions = newQuestions.filter((question) => {
+			const shouldInclude = newTechSets.every((tech) => {
+				console.log(
+					"->",
+					question.name,
+					tech.id,
+					question.acceptedTech[tech.id],
+					question.acceptedTech[tech.id] == 1
+				);
+				return question.acceptedTech[tech.id] == 1; // ?? prev == 1
 			});
 
 			return shouldInclude;
@@ -85,7 +92,7 @@ const strictmode = () => {
 		// 	// );
 		// }
 
-		console.log("current question", askableQuestions);
+		console.log("current question", newAskableQuestions);
 	};
 
 	const handleResults = () => {
