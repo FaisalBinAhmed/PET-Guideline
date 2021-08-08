@@ -207,14 +207,8 @@ const questionnaire = () => {
 				<Sider
 					breakpoint="lg"
 					collapsedWidth="0"
-					onBreakpoint={(broken) => {
-						// console.log(broken);
-					}}
 					width="25vw"
-					style={{ backgroundColor: "#DEEAEA" }}
-					onCollapse={(collapsed, type) => {
-						// console.log(collapsed, type);
-					}}>
+					style={{ backgroundColor: "#DEEAEA" }}>
 					<div className={styles.steps}>
 						<Steps direction="vertical" size="small" current={questionIndex}>
 							{questionData.map((item, index) => (
