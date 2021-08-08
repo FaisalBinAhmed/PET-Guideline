@@ -16,6 +16,9 @@ Differential privacy sometimes uses an intermediary mechanism to control any sta
 
 This is particularly useful when some of the data is already known to the outside world. Without adding noise to the other data, the publication of the entire thing makes those other data vulnerable to attacks like linkage.
 `,
+		link1:
+			"https://journalofbigdata.springeropen.com/articles/10.1186/s40537-018-0124-9",
+		link2: "https://hdsr.mitpress.mit.edu/pub/dgg03vo6/release/2",
 	},
 	{
 		id: "fl",
@@ -25,7 +28,12 @@ This is particularly useful when some of the data is already known to the outsid
 		how: `Imagine you have 5 business partners that use one of your business software. In order to improve the software experience you want to know how it works in those systems: its performance and other metrics. However, this information can be private and companies will not agree to share any information that includes its private and sensitive business information. One solution is to build a mechanism that would gain analytical information from these individual companies. However, you might need to duplicate this analytical engine for the specific use cases and in the end, it could become very complicated to manage and aggregate this information.
 
 Federated Learning comes to the rescue in this situation. Instead of building multiple analytical engines that do the same thing, Federated learning provides a mechanism to host the aggregated analytics engine at a central location while also getting information from those individual companies. The individual federated learning model in each company will analyze the data and send only the sanitized analysis to the central server. The server would then aggregate these analyses and create a central model. This new and updated central model will then be pushed to the client side for better analysis. The analysis is being improved while maintaining the privacy and security of these clients.`,
+		link1:
+			"https://www.analyticsvidhya.com/blog/2021/05/federated-learning-a-beginners-guide/",
+		link2:
+			"https://towardsdatascience.com/federated-learning-a-step-by-step-implementation-in-tensorflow-aac568283399",
 	},
+
 	{
 		id: "zkp",
 		name: "Zero Knowledge Proof",
@@ -36,6 +44,8 @@ Federated Learning comes to the rescue in this situation. Instead of building mu
 To prove the verifier that you indeed know about identifying the sexes of kittens you don’t have to tell the verifier which kitten is what. In other words you don’t need to reveal the information to prove your knowledge. First, two identical kittens but with different sexes will be handed to the verifier and he would assume and call them kitten A and B. By looking at them you know which kitten is male and which is female but how do you prove it?
 
 The verifier would then swap the kitten unbeknownst to you whether he swapped it or not. If he swaps, kitten A will take the place of kitten B and vice versa. However you have no way of knowing if he swapped or not, unless of course you identify them by their sex and tell the verifier whether he swapped them ir not. This swapping takes place multiple times. With each correct answer you eliminate the chance of randomly guessing and after a certain number of successful guesses, the verifier can be assured that you indeed know to identify the sex if kittens.`,
+		link1: "https://www.wired.com/story/zero-knowledge-proofs/",
+		link2: "https://101blockchains.com/zkp-java-implementation/",
 	},
 	{
 		id: "he",
@@ -43,6 +53,10 @@ The verifier would then swap the kitten unbeknownst to you whether he swapped it
 		arr: [3, 2, 3, 1, 1, 3, 1, 3, 1, 1, 3, 2, 2],
 		info: `Homomorphic encryption is a cryptographic technique that lets an entity perform computational operations on an encrypted data without needing to decrypt the data to plain text first. While this might sound like an antithesis of the idea of cryptography, it lets any participating entity perform operations without sharing of the original encryption keys.`,
 		how: `Imagine you want to implement a voting system where voters can identify their vote has been counted but without telling anyone publicly who they voted for. If someone votes for person A, they receive an unique encrypted code that resembles their vote in the system. These codes are publicly available and anyone can verify whether their vote was valid. However if the vote itself was encrypted, how do you verify who got the most votes? Homomorphic encryption comes into play here. Instead of decrypting everyone’s vote and then counting the tally, all votes for person A will be counted by multiplying the cipher text of the individual votes. Then the big cipher text will be publicly decrypted revealing and validating the number of votes for person A. This system ensures the individual votes of the voters are never decrypted. Hence ensuring cryptographic integrity while adding extra computations on top.`,
+		link1:
+			"https://www.venafi.com/blog/homomorphic-encryption-what-it-and-how-it-used",
+		link2:
+			"https://blog.openmined.org/build-an-homomorphic-encryption-scheme-from-scratch-with-python/",
 	},
 	{
 		id: "smc",
@@ -59,6 +73,9 @@ This way the other two companies can’t share the information about the first c
 Now the first company would add the two numbers it was provided by the other companies and subtract the numbers it provided to the other companies.
 
 After this process all the sums will be added together to derive the actual sum of the three companies. Finding the average is now just the matter of dividing it by 3. This way the companies are able to compute their average salary without actually revealing the private information. This way the necessity of trust and intermediary is eradicated.`,
+		link1:
+			"https://inpher.io/technology/what-is-secure-multiparty-computation/",
+		link2: "https://academic.oup.com/comjnl/article/61/12/1749/5095655",
 	},
 	{
 		id: "ob",
@@ -72,6 +89,9 @@ Obfuscation is very useful to ensure intellectual protection and digital rights 
 		how: `There are many techniques to apply obfuscation. For software engineering, a code can be obfuscated by obscuring its control flows, string encryption, renaming obfuscation, minification and so on. Normally any combination of these techniques are used. 
 
 To use string encryption, all the string values in the software binary are encrypted and replaced with ciphertext, the secret key is usually hidden in the binary and is unintelligible to the human reader. The original strings are only restored when the software process is in the runtime. This makes it extremely hard for reverser engineers to understand critical parts of the source code and their operations.`,
+		link1: "https://searchsecurity.techtarget.com/definition/obfuscation",
+		link2:
+			"https://dltlabs.medium.com/implementing-code-obfuscation-5b1fda3ed741",
 	},
 	{
 		id: "dape",
@@ -85,6 +105,8 @@ Data perturbation is of two types: 1. Probability distribution approach and 2. V
 
 In probability distribution approach the data is replaced from the same data sample it’s a part of. On the other hand in the value distortion approach, the noise can be added to it in an additive or randomized way. It uses a decision tree classification method to decide which type of noise should be added to a data depending on various criteria - much like this guideline.`,
 		how: `Data perturbation is an umbrella term for various techniques. These techniques are explained already in the same chapter. Please refer to their individual implementations.`,
+		link1: "https://ieeexplore.ieee.org/document/6335531",
+		link2: "https://core.ac.uk/download/pdf/301354626.pdf",
 	},
 	{
 		id: "anon",
@@ -94,6 +116,9 @@ In probability distribution approach the data is replaced from the same data sam
 
 Anonymization is an umbrella term for many techniques. Different properties of anonymization can be achieved by implementing any combinations of anonymization techniques. Such properties are k-anonymity, l-diversity, t-closeness etc. An anonymized data set is said to be k-anonymous if the properties of k-anonymity have been achieved in the data set. The techniques to achieve anonymization are: generalization, swapping, classification, suppression etc.`,
 		how: `Data anonymization is irreversible. Meaning it is no longer possible to retrieve personal information from the data set after anonymization has been applied. In classification technique: any value containing personal information is removed and replaced with the type of the information. For example: if the data contains: Faisal has bought a house in Munich in 2021,” it will be replaced with anonymized data as “[NAME] has bought a house in [LOCATION] on [DATE].”`,
+		link1:
+			"https://www.record-evolution.de/en/data-anonymization-techniques-and-best-practices-a-quick-guide/",
+		link2: "https://www.n-able.com/blog/data-anonymization-overview",
 	},
 	{
 		id: "kan",
@@ -114,6 +139,8 @@ The sensitive columns should have varying values. It must not be the same throug
 
 K-anonymity works when the dimension of data is low. Higher dimensional data has more probability to contains other columns that may reduce the effectiveness of generalized columns.
 		`,
+		link1: "https://www.worldscientific.com/doi/abs/10.1142/S0218488502001648",
+		link2: "https://www.privitar.com/blog/k-anonymity-an-introduction/",
 	},
 	{
 		id: "ld",
@@ -124,6 +151,9 @@ K-anonymity works when the dimension of data is low. Higher dimensional data has
 
 L-diversity is computationally more expensive to achieve and even after the property is achieved it’s still susceptible to many other attacks like skewness and similarity attacks.`,
 		how: `A dataset is said to be l-diversified if for each group of records that share a combination of key attributes, there must be an l well represented value for each sensitive attribute. In other words there must be l numbers of distinct values in the sensitive attributes/columns.`,
+		link1: "https://www.cs.rochester.edu/u/muthuv/ldiversity.pdf",
+		link2:
+			"https://help.sap.com/viewer/b3ee5778bc2e4a089d3299b82ec762a7/2.0.04/en-US/eeb681e53a06434ca8a0fd20ab9c2b7c.html",
 	},
 	{
 		id: "tc",
@@ -135,7 +165,10 @@ T-closeness also addresses the two vulnerabilities of k-anonymity such as homoge
 
 
 T-closeness defines that the distribution of sensitive data in a group shouldn’t be too far from its distribution in the full population. It’s very effective with regards to higher dimensional data and has less utility loss compared to k-anonymity.`,
-		how: ``,
+		how: `Please refer to the useful links to get information on how it works`,
+		link1:
+			"https://www.cs.purdue.edu/homes/ninghui/papers/t_closeness_icde07.pdf",
+		link2: "https://deepai.org/publication/a-tutorial-on-computing-t-closeness",
 	},
 	{
 		id: "psu",
@@ -147,6 +180,9 @@ Pseudonymization is currently promoted by European Union because it lets compani
 		how: `The pseudonyms can be any code, randomly generated token or data strings that are unique to the data set and are linked to the original data subject. The mapping of pseudonyms to their respective data is stored in a different database or location to reduce the chance of breach and linkage. This is a reversible process as it lets companies or data processors restore its original content by linking the pseudonyms from the mapping data. However since the data is pseudonymized and stored separately, it reduces the chance of any adversaries to re-identify the information back to the original subjects. 
 
 Pseudonymization is one of the fastest and computationally least expensive ways to achieve privacy enhancement. This is one of the major reasons European Union is advocating its adoption.`,
+		link1:
+			"https://www.enisa.europa.eu/publications/pseudonymisation-techniques-and-best-practices",
+		link2: "https://www.i-scoop.eu/gdpr/pseudonymization/",
 	},
 	{
 		id: "ran",
@@ -156,6 +192,9 @@ Pseudonymization is one of the fastest and computationally least expensive ways 
 		how: `Randomization is considered a data perturbation technique. So it follows the principles of data perturbation. 
 
 For example in a Microsoft proposed data randomization technique the data is randomized by storing the XORed data with another field instead of the original data. This provides the dataset probabilistic protection and the individual data become harder to infer and link.`,
+		link1:
+			"https://www.microsoft.com/en-us/research/wp-content/uploads/2008/09/tr-2008-120.pdf",
+		link2: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3136079/",
 	},
 	// {
 	// 	id: "clo",

@@ -19,9 +19,9 @@ const Question = ({ question, description = "", handleAnswer, yes, no }) => {
 					description={description}
 				/>
 				<div className={styles.skip}>
-					<Button type="link" onClick={() => setVisible(true)}>
+					{/* <Button type="link" onClick={() => setVisible(true)}>
 						Learn More
-					</Button>
+					</Button> */}
 				</div>
 				<Divider />
 				<div className={styles.answer}>
