@@ -58,7 +58,7 @@ const strictmode = () => {
 		setAskableQuestions(newAskableQuestions);
 		processQuestionSet(ans, newAskableQuestions);
 	};
-
+	//issue when ans = 0 and the subsequent checkis 1 arbitrarily?
 	const processQuestionSet = (answer, newQuestions) => {
 		const newTechSets = techSets.filter((item) => {
 			return item.arr[currentQuestion.id - 1] == answer;
