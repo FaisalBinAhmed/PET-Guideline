@@ -13,8 +13,13 @@ import Link from "next/link";
 const { Content, Sider } = Layout;
 const { Step } = Steps;
 
+const refactorQuestions = (questionArray) =>
+	questionArray.sort((a, b) => a.score - b.score);
+
 const strictmode = () => {
-	const [askableQuestions, setAskableQuestions] = useState([...questionData]); //initially all questions
+	const [askableQuestions, setAskableQuestions] = useState(
+		refactorQuestions(questionData)
+	); //initially all questions
 	const [techSets, setTechSets] = useState([...pets]); //initially all techs are eligible
 	const [currentQuestion, setCurrentQuestion] = useState(askableQuestions[0]); //first question is chosen arbitrarily
 
@@ -61,7 +66,7 @@ const strictmode = () => {
 	//issue when ans = 0 and the subsequent checkis 1 arbitrarily?
 	const processQuestionSet = (answer, newQuestions) => {
 		const newTechSets = techSets.filter((item) => {
-			return item.arr[currentQuestion.id - 1] == answer;
+			return item.arr[currentQuestion.id - 1] == (answer || 3);
 		});
 		console.log("techset", newTechSets);
 		setTechSets(newTechSets);
@@ -73,11 +78,11 @@ const strictmode = () => {
 					question.name,
 					tech.id,
 					question.acceptedTech[tech.id],
-					question.acceptedTech[tech.id] == 1
+					question.acceptedTech[tech.id] == (answer || 3)
 				);
-				return question.acceptedTech[tech.id] == 1; // ?? prev == 1
+				return question.acceptedTech[tech.id] == (answer || 3); // ?? prev == 1
 			});
-
+			console.log("-/", shouldInclude);
 			return shouldInclude;
 		});
 

@@ -181,5 +181,8 @@ For example you want to train your fancy new artificially intelligent video filt
 		how: `There are many ways to generate synthetic data depending on the use cases. For example if you need to train a machine learning model that recognizes hand waving in a video, you can use Deepfake to generate data sets for this training purpose. 
 
 To start with you’d need some actual video footage of people waving hands and some images of artificially generated people. Then Deepfake will use these two data to create a doctored version of videos where those persons in the artificially created images will be seen waving their hand. Deepfake will make sure their bodily features are reflected in the new video. Now can use these synthetic videos to train your application; without sacrificing anyone’s privacy.`,
+		link1:
+			"https://towardsdatascience.com/synthetic-data-generation-a-must-have-skill-for-new-data-scientists-915896c0c1ae",
+		link2: "https://research.aimultiple.com/synthetic-data-generation/",
 	},
 ];

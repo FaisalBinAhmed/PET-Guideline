@@ -174,12 +174,12 @@ const PET = ({ title, missed, matched, alt }) => {
 					key="2">
 					<p style={{ display: "inline" }}>1. </p>
 					<a style={{ display: "inline" }}>
-						https://towardsdatascience.com/synthetic-data-generation-a-must-have-skill-for-new-data-scientists-915896c0c1ae
+						{pets.find((i) => i.id == title).link1}
 					</a>
 					<br />
 					<p style={{ display: "inline" }}>2. </p>
 					<a style={{ display: "inline" }}>
-						https://research.aimultiple.com/synthetic-data-generation/
+						{pets.find((i) => i.id == title).link2}
 					</a>
 				</Collapse.Panel>
 			</Collapse>

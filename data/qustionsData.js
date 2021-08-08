@@ -23,6 +23,7 @@ export const questionData = [
 			ran: 1,
 			syn: 1,
 		},
+		score: 9,
 	},
 	{
 		id: 2,
@@ -48,6 +49,7 @@ export const questionData = [
 			ran: 1,
 			syn: 3,
 		},
+		score: 10,
 	},
 	{
 		id: 3,
@@ -73,6 +75,7 @@ export const questionData = [
 			ran: 3,
 			syn: 3,
 		},
+		score: 3,
 	},
 	{
 		id: 4,
@@ -98,6 +101,7 @@ export const questionData = [
 			ran: 2,
 			syn: 2,
 		},
+		score: 3,
 	},
 	{
 		id: 5,
@@ -123,6 +127,7 @@ export const questionData = [
 			ran: 3,
 			syn: 3,
 		},
+		score: 4,
 	},
 	{
 		id: 6,
@@ -148,6 +153,7 @@ export const questionData = [
 			ran: 2,
 			syn: 1,
 		},
+		score: 2,
 	},
 	{
 		id: 7,
@@ -173,6 +179,7 @@ export const questionData = [
 			ran: 3,
 			syn: 1,
 		},
+		score: 5,
 	},
 	{
 		id: 8,
@@ -198,6 +205,7 @@ export const questionData = [
 			ran: 2,
 			syn: 2,
 		},
+		score: 9,
 	},
 	{
 		id: 9,
@@ -223,6 +231,7 @@ export const questionData = [
 			ran: 2,
 			syn: 2,
 		},
+		score: 10,
 	},
 	{
 		id: 10,
@@ -248,6 +257,7 @@ export const questionData = [
 			ran: 0,
 			syn: 0,
 		},
+		score: 4,
 	},
 	{
 		id: 11,
@@ -273,6 +283,7 @@ export const questionData = [
 			ran: 1,
 			syn: 1,
 		},
+		score: 12,
 	},
 	{
 		id: 12,
@@ -298,6 +309,7 @@ export const questionData = [
 			ran: 3,
 			syn: 1,
 		},
+		score: 6,
 	},
 	{
 		id: 13,
@@ -323,5 +335,6 @@ export const questionData = [
 			ran: 2,
 			syn: 2,
 		},
+		score: 2,
 	},
 ];

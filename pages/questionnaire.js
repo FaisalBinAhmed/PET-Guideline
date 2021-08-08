@@ -219,7 +219,7 @@ const questionnaire = () => {
 							))}
 						</Steps>
 						{showResult && (
-							<Link href="/strict">
+							<Link href="/strictmode">
 								<Button
 									type="dashed"
 									block
