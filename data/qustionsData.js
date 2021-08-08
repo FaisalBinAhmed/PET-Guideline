@@ -30,8 +30,8 @@ export const questionData = [
 		name: "Do you plan to publish the data?",
 		importance:
 			"If you want to publish the data you’re currently dealing with, you have to take additional measures before you publish the data. The data need to be processed, checked against private info and local law before it can be published. The purpose of publication should also need to be taken into account.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "You want to publish the data",
+		no: "You do not want to publish the data",
 		step: "Data Publication",
 		acceptedTech: {
 			dp: 1,
@@ -56,8 +56,8 @@ export const questionData = [
 		name: "Is the data distributed or stored in a central location?",
 		importance:
 			"If the data is stored in multiple locations then managing the date in all of those locations is deemed necessary. Since the data will be transported, synced and stored, it should also be made sure the data and privacy are protected at those stages.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "The data is distributed",
+		no: "The data is centralized",
 		step: "Distributed Data",
 		acceptedTech: {
 			dp: 1,
@@ -82,8 +82,8 @@ export const questionData = [
 		name: "Do you collect data from edge devices?",
 		importance:
 			"The data stored in edge devices can be handled in two ways. In one way, the raw private data does not need to leave user devices for processing, the other relies on direct transfer of data between the client and a server. The tradeoff here is the accuracy of the insights and telemetry received from the end users.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "You collect data from edge devices",
+		no: "You do not collect data from edge devices",
 		step: "Edge Devices",
 		acceptedTech: {
 			dp: 1,
@@ -108,8 +108,8 @@ export const questionData = [
 		name: "Will the data be transported",
 		importance:
 			"The data that will be transferred has to be protected against certain threats, mainly the data in rest and transit are vulnerable to many attacks. Also if the data crossed International boundaries, the local legislations and regulations take precedence. For many reasons the data can not be transferred to another country or region.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "The data is transported",
+		no: "The data is not transported",
 		step: "Data Transportation",
 		acceptedTech: {
 			dp: 2,
@@ -134,8 +134,8 @@ export const questionData = [
 		name: "Do you need real data?",
 		importance:
 			"In some cases, the desired goal can be achieved without using real data at all. For example if you want to generate a fake dataset, or train your ML model with similar data for purposes like image recognition, deep fake creation, and populating websites with dummy data. In these cases, the real data has no benefits over synthetically generated data, especially as the purpose is to learn the type of data, not the data itself.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "We need real data",
+		no: "We do not need real data",
 		step: "Need of Real Data",
 		acceptedTech: {
 			dp: 1,
@@ -160,8 +160,8 @@ export const questionData = [
 		name: "Can you afford high computational cost?",
 		importance:
 			"The amount of processing power, and memory taken to implement a specific technology can be a limiting factor in many scenarios. If the data is being processed in an IoT device or devices with limited computational power, certain technologies may not be eligible to be used.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "High computational cost is not a problem",
+		no: "High computational cost is not desirable",
 		step: "Computational Cost",
 		acceptedTech: {
 			dp: 0,
@@ -186,8 +186,8 @@ export const questionData = [
 		name: "Are there multiple stakeholders?",
 		importance:
 			"If there are more than one stakeholder involved it can raise multiple concerns. The stakeholders may not agree on sharing their data between them. It’s also possible the stakeholders do not have the same rights to the data.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "We have multiple stakeholders",
+		no: "There is only one stakeholders",
 		step: "Multiple StakeHolders",
 		acceptedTech: {
 			dp: 1,
@@ -212,8 +212,8 @@ export const questionData = [
 		name: "Are third party stakeholders involved?",
 		importance:
 			"If a third party is involved during any phase of the data life cycle, certain policy can restrict sharing of data with that party. If you need to share the data with a third party, certain technologies can help alleviate this issue while providing minimal loss had it been shared without such restrictions",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "We share data with third parties",
+		no: "Third parties are not involved",
 		step: "Third Parties",
 		acceptedTech: {
 			dp: 1,
@@ -238,8 +238,8 @@ export const questionData = [
 		name: "Do you need lossless technology?",
 		importance:
 			"The losslessness of a privacy enhancing technology is important when you’re dealing with mission critical data and the insights derived from the data should reproduce the same output for the same input. In other words the process of applying any privacy enhancing technology shouldn’t change the data in a way that it can affect the performance of the useful metrics.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "The process should be lossless",
+		no: "Lossy process will also work",
 		step: "Lossless",
 		acceptedTech: {
 			dp: 0,
@@ -264,8 +264,8 @@ export const questionData = [
 		name: "Is accuracy important to you?",
 		importance:
 			"Certain privacy enhancing technology provides better accuracy than others. In other words, for the same data, certain technologies will produce consistent results. Accuracy is important when you have huge amount of data and little discrepancy in accuracy can lead to huge change in the final output.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "The process should be 100 percent accurate",
+		no: "Some inaccuracy is negligible",
 		step: "Accuracy",
 		acceptedTech: {
 			dp: 1,
@@ -290,8 +290,8 @@ export const questionData = [
 		name: "Is the data textual?",
 		importance:
 			"Text based data needs different processing than non-textual media based data. Some technologies work better with text based data. Since non textual data are stored and formatted in specific way, even storing the same data by different formats can lead to varying privacy enhancements by the same technologies.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "The data is text based",
+		no: "The data is in other/mixed formats",
 		step: "Textual Data",
 		acceptedTech: {
 			dp: 3,
@@ -316,8 +316,8 @@ export const questionData = [
 		name: "Dimension of the data?",
 		importance:
 			"This is an important metric when comparing different anonymization techniques like k-anonymity, l-diversity and t-closeness. Although, there is an improvement over the former, the higher dimension a dataset is, the former tends to provide better anonymity.",
-		yes: "You should choose yes if ...",
-		no: "you shoudn't select this if....",
+		yes: "The data is high dimensional",
+		no: "The data dimension is compact",
 		step: "Data Dimension",
 		acceptedTech: {
 			dp: 2,
