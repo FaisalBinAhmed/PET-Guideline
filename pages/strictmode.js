@@ -123,7 +123,7 @@ const strictmode = () => {
 					breakpoint="lg"
 					collapsedWidth="0"
 					width="25vw"
-					style={{ backgroundColor: "#DEEAEA" }}>
+					style={{ backgroundColor: "#90CAF9" }}>
 					<div className={styles.steps}>
 						<Steps direction="vertical" size="small">
 							{askableQuestions.map((item, index) => (
