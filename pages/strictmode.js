@@ -20,7 +20,8 @@ const strictmode = () => {
 	const [askableQuestions, setAskableQuestions] = useState(
 		refactorQuestions(questionData)
 	); //initially all questions
-	const [techSets, setTechSets] = useState([...pets]); //initially all techs are eligible
+	const [techSets, setTechSets] = useState(pets); //initially all techs are eligible
+	const [oldTechSets, setOldTechSets] = useState([]);
 	const [currentQuestion, setCurrentQuestion] = useState(askableQuestions[0]); //first question is chosen arbitrarily
 
 	useEffect(() => {
@@ -34,8 +35,8 @@ const strictmode = () => {
 
 	const router = useRouter();
 
-	const primary = useRef("");
-	const secondary = useRef("");
+	const primary = useRef([]);
+	const secondary = useRef([]);
 
 	const hiscore = useRef();
 	const secondScore = useRef();
@@ -65,6 +66,7 @@ const strictmode = () => {
 	};
 	//issue when ans = 0 and the subsequent checkis 1 arbitrarily?
 	const processQuestionSet = (answer, newQuestions) => {
+		setOldTechSets(techSets);
 		const newTechSets = techSets.filter((item) => {
 			return item.arr[currentQuestion.id - 1] == answer;
 		});
@@ -78,9 +80,9 @@ const strictmode = () => {
 					question.name,
 					tech.id,
 					question.acceptedTech[tech.id],
-					question.acceptedTech[tech.id] == (answer || 3)
+					question.acceptedTech[tech.id] == answer
 				);
-				return question.acceptedTech[tech.id] == (answer || 3); // ?? prev == 1
+				return question.acceptedTech[tech.id] == answer; // ?? prev == 1
 			});
 			console.log("-/", shouldInclude);
 			return shouldInclude;
@@ -103,6 +105,13 @@ const strictmode = () => {
 	const handleResults = () => {
 		calculateResults();
 		setShowResult(true);
+		console.log("old", oldTechSets);
+		const primaryPET = [];
+		oldTechSets.map((item) =>
+			primaryPET.push({ name: item.id, missed: [], matched: [] })
+		);
+
+		primary.current = primaryPET;
 	};
 
 	const calculateResults = () => {};
@@ -139,8 +148,8 @@ const strictmode = () => {
 							<Result
 								primary={primary.current}
 								secondary={secondary.current}
-								hi={hiscore.current}
-								sec={secondScore.current}
+								// hi={hiscore.current}
+								// sec={secondScore.current}
 							/>
 						) : askableQuestions.length && techSets.length > 1 ? (
 							<Question

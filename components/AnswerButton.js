@@ -10,7 +10,9 @@ const AnswerButton = ({ title, desc, color, handleClick, value }) => {
 			block
 			style={{ height: "10vw" }}>
 			<Title style={{ color }}>{title}</Title>
-			<Title level={5}>{desc}</Title>
+			<Title style={{}} level={5}>
+				{desc}
+			</Title>
 		</Button>
 	);
 };

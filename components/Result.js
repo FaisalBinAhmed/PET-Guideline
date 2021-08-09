@@ -56,15 +56,15 @@ const Result = ({ primary, secondary, hi, sec }) => {
 						return (
 							<PET
 								key={index}
-								title={item.name}
-								missed={item.missed}
-								matched={item.matched}
+								title={item?.name}
+								missed={item?.missed}
+								matched={item?.matched}
 							/>
 						);
 					})}
 				</div>
 			</div>
-			{alt.length && (
+			{!!alt.length && (
 				<div className={styles.secondary}>
 					<div className={styles.container}>
 						<div style={{ fontSize: "20px" }}>Your Alternative PET(s):</div>
@@ -75,9 +75,9 @@ const Result = ({ primary, secondary, hi, sec }) => {
 							return (
 								<PET
 									key={index}
-									title={item.name}
-									missed={item.missed}
-									matched={item.matched}
+									title={item?.name}
+									missed={item?.missed}
+									matched={item?.matched}
 									alt={true}
 								/>
 							);
@@ -101,23 +101,24 @@ const Result = ({ primary, secondary, hi, sec }) => {
 // 	);
 // };
 
-const PET = ({ title, missed, matched, alt }) => {
+const PET = ({ title, missed = [], matched = [], alt }) => {
 	return (
 		<>
-			<div className={styles.hero}>{pets.find((i) => i.id == title).name}</div>
+			<div className={styles.hero}>{pets.find((i) => i.id == title)?.name}</div>
 			<div className={styles.tagContainer}>
-				{matched.map((item) => (
-					<Popover
-						content={
-							<div className={styles.tooltip}>
-								{questionData[item - 1].importance}
-							</div>
-						}>
-						<Tag style={{ fontSize: "20px", padding: "10px" }} color="green">
-							{questionData[item - 1].step}
-						</Tag>
-					</Popover>
-				))}
+				{!!matched.length &&
+					matched.map((item) => (
+						<Popover
+							content={
+								<div className={styles.tooltip}>
+									{questionData[item - 1].importance}
+								</div>
+							}>
+							<Tag style={{ fontSize: "20px", padding: "10px" }} color="green">
+								{questionData[item - 1].step}
+							</Tag>
+						</Popover>
+					))}
 			</div>
 			{!!missed.length && (
 				<>
@@ -127,7 +128,7 @@ const PET = ({ title, missed, matched, alt }) => {
 							your chosen criteria. Here are the choices it doesn't match:
 						</div>
 					)}
-					{alt && (
+					{!!alt && ( //chaged to double negative to avoid 0
 						<div className={styles.subtitle}>
 							While the above PET is another alternative technolgy for you, it
 							doesn't match all of your chosen criteria. Here are the choices it
@@ -154,7 +155,7 @@ const PET = ({ title, missed, matched, alt }) => {
 					);
 				})}
 			</div>
-			<div className={styles.info}>{pets.find((i) => i.id == title).info}</div>
+			<div className={styles.info}>{pets.find((i) => i.id == title)?.info}</div>
 			<Collapse ghost>
 				<Collapse.Panel
 					style={{
@@ -163,7 +164,7 @@ const PET = ({ title, missed, matched, alt }) => {
 					}}
 					header="More Info"
 					key="1">
-					<p>{pets.find((i) => i.id == title).how}</p>
+					<p>{pets.find((i) => i.id == title)?.how}</p>
 				</Collapse.Panel>
 				<Collapse.Panel
 					style={{
@@ -174,12 +175,12 @@ const PET = ({ title, missed, matched, alt }) => {
 					key="2">
 					<p style={{ display: "inline" }}>1. </p>
 					<a style={{ display: "inline" }}>
-						{pets.find((i) => i.id == title).link1}
+						{pets.find((i) => i.id == title)?.link1}
 					</a>
 					<br />
 					<p style={{ display: "inline" }}>2. </p>
 					<a style={{ display: "inline" }}>
-						{pets.find((i) => i.id == title).link2}
+						{pets.find((i) => i.id == title)?.link2}
 					</a>
 				</Collapse.Panel>
 			</Collapse>
