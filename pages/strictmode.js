@@ -133,6 +133,21 @@ const strictmode = () => {
 									description={description[index]}></Step>
 							))}
 						</Steps>
+						{showResult && (
+							<Link href="/easymode">
+								<Button
+									type="dashed"
+									block
+									style={{
+										height: "120px",
+										maxWidth: "220px",
+										marginTop: "20px",
+									}}>
+									<Typography.Title level={4}>Easy Mode</Typography.Title>
+									<Typography.Text>Recommended Method</Typography.Text>
+								</Button>
+							</Link>
+						)}
 					</div>
 				</Sider>
 				<Layout style={{ maxWidth: "75vw" }}>

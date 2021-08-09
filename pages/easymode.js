@@ -99,7 +99,7 @@ const calculateMissedCriteria = (pet, ansArr) => {
 	return { missedCriteria, matchedCriteria };
 };
 
-const questionnaire = () => {
+const easymode = () => {
 	const [questionIndex, setquestionIndex] = useState(0);
 	const [answers, setAnswers] = useState([]);
 	const [description, setDescription] = useState([]);
@@ -277,4 +277,4 @@ const questionnaire = () => {
 		</div>
 	);
 };
-export default questionnaire;
+export default easymode;
