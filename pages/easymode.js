@@ -231,8 +231,8 @@ const easymode = () => {
 										maxWidth: "220px",
 										marginTop: "20px",
 									}}>
-									<Typography.Title level={4}>Strict Mode!</Typography.Title>
-									<Typography.Text>For a more specific answer</Typography.Text>
+									<Typography.Title level={4}>Strict Mode</Typography.Title>
+									<Typography.Text>strict answers</Typography.Text>
 								</Button>
 							</Link>
 						)}
